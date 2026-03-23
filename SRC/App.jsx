@@ -9,8 +9,8 @@ import Reports from './pages/Reports';
 import Timetable from './pages/Timetable';
 import Layout from './components/Layout';
 import { AuthProvider, useAuth } from '@/lib/AuthContext';
-import UserNotRegisteredError from '@/components/UserNotRegisteredError';
-// Add page imports here
+
+// REMOVED: UserNotRegisteredError import because the file is missing locally
 
 const AuthenticatedApp = () => {
   const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
@@ -19,7 +19,7 @@ const AuthenticatedApp = () => {
   if (isLoadingPublicSettings || isLoadingAuth) {
     return (
       <div className="fixed inset-0 flex items-center justify-center">
-        <div className="w-8 h-8 border-4 border-slate-200 border-t-slate-800 rounded-full animate-spin"></div>
+        <div className="w-8 h-8 border-4 rounded-full border-slate-200 border-t-slate-800 animate-spin"></div>
       </div>
     );
   }
@@ -27,15 +27,19 @@ const AuthenticatedApp = () => {
   // Handle authentication errors
   if (authError) {
     if (authError.type === 'user_not_registered') {
-      return <UserNotRegisteredError />;
+      // Changed to a simple error message since the component is missing
+      return (
+        <div className="flex flex-col items-center justify-center min-h-screen p-4 text-center">
+          <h2 className="text-xl font-bold text-red-600">User Not Registered</h2>
+          <p className="text-slate-600">Please contact your JKUAT administrator to register your account.</p>
+        </div>
+      );
     } else if (authError.type === 'auth_required') {
-      // Redirect to login automatically
       navigateToLogin();
       return null;
     }
   }
 
-  // Render the main app
   return (
     <Routes>
       <Route element={<Layout />}>
@@ -49,9 +53,7 @@ const AuthenticatedApp = () => {
   );
 };
 
-
 function App() {
-
   return (
     <AuthProvider>
       <QueryClientProvider client={queryClientInstance}>
