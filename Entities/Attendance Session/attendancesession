@@ -1,0 +1,45 @@
+{
+  "name": "AttendanceSession",
+  "type": "object",
+  "properties": {
+    "classroom_id": {
+      "type": "string"
+    },
+    "unit_name": {
+      "type": "string"
+    },
+    "unit_code": {
+      "type": "string"
+    },
+    "venue": {
+      "type": "string"
+    },
+    "date": {
+      "type": "string"
+    },
+    "start_time": {
+      "type": "string"
+    },
+    "end_time": {
+      "type": "string"
+    },
+    "lecturer": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "open",
+        "closed"
+      ]
+    },
+    "total_signed": {
+      "type": "number"
+    }
+  },
+  "required": [
+    "classroom_id",
+    "date",
+    "status"
+  ]
+}

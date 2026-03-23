@@ -1,0 +1,57 @@
+{
+  "name": "ClassRoom",
+  "type": "object",
+  "properties": {
+    "unit_code": {
+      "type": "string"
+    },
+    "unit_name": {
+      "type": "string"
+    },
+    "lecturer": {
+      "type": "string"
+    },
+    "venue": {
+      "type": "string"
+    },
+    "day": {
+      "type": "string",
+      "enum": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+      ]
+    },
+    "start_time": {
+      "type": "string"
+    },
+    "end_time": {
+      "type": "string"
+    },
+    "group": {
+      "type": "string"
+    },
+    "gps_lat": {
+      "type": "number"
+    },
+    "gps_lng": {
+      "type": "number"
+    },
+    "radius_meters": {
+      "type": "number"
+    },
+    "is_active": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "unit_code",
+    "unit_name",
+    "venue",
+    "day",
+    "start_time",
+    "end_time"
+  ]
+}

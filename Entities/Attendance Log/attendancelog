@@ -1,0 +1,79 @@
+{
+  "name": "AttendanceLog",
+  "type": "object",
+  "properties": {
+    "session_id": {
+      "type": "string"
+    },
+    "classroom_id": {
+      "type": "string"
+    },
+    "student_email": {
+      "type": "string"
+    },
+    "student_name": {
+      "type": "string"
+    },
+    "unit_name": {
+      "type": "string"
+    },
+    "unit_code": {
+      "type": "string"
+    },
+    "date": {
+      "type": "string"
+    },
+    "signed_at": {
+      "type": "string"
+    },
+    "gps_lat": {
+      "type": "number"
+    },
+    "gps_lng": {
+      "type": "number"
+    },
+    "distance_from_class": {
+      "type": "number"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "present",
+        "rejected"
+      ]
+    }
+  },
+  "required": [
+    "session_id",
+    "student_email",
+    "date",
+    "status"
+  ],
+  "rls": {
+    "create": {
+      "created_by": "{{user.email}}"
+    },
+    "read": {
+      "$or": [
+        {
+          "created_by": "{{user.email}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}
