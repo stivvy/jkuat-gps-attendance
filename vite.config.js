@@ -3,7 +3,9 @@ import react from '@vitejs/plugin-react'
 import path from 'path'
 
 export default defineConfig({
-  // This tells Vite to use standard React tools, not Base44 tools
+  // ADD THIS LINE BELOW
+  base: './', 
+  
   plugins: [react()],
   resolve: {
     alias: {
@@ -11,6 +13,6 @@ export default defineConfig({
     },
   },
   build: {
-    outDir: 'dist', // This ensures the folder Capacitor looks for is created
+    outDir: 'dist', 
   }
 })
